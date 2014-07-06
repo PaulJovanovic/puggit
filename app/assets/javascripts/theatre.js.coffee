@@ -31,25 +31,26 @@ changeChannel = ->
 $(document).ready ->
   $(".js-theatre-channel").click ->
     $channel = $(@)
-    $(".js-theatre-channel.active").removeClass("active")
-    $channel.addClass("active")
+    if !$channel.hasClass("active")
+      $(".js-theatre-channel.active").removeClass("active")
+      $channel.addClass("active")
 
-    $.ajax(
-      type: "GET"
-      url: "/streams/search"
-      data:
-        query: $channel.data("name")
-      dataType: "json"
-    ).success (data)->
-      streams = data
-      stream_index = 0
-      changeChannel()
-      # setTimeout( ->
-      #   player = $("#twitch_embed_player")[0]
-      #   onlineChecker = setInterval( ->
-      #     console.log(player.onlineStatus())
-      #   , 60000)
-      # , 60000)
+      $.ajax(
+        type: "GET"
+        url: "/streams/search"
+        data:
+          query: $channel.data("name")
+        dataType: "json"
+      ).success (data)->
+        streams = data
+        stream_index = 0
+        changeChannel()
+        # setTimeout( ->
+        #   player = $("#twitch_embed_player")[0]
+        #   onlineChecker = setInterval( ->
+        #     console.log(player.onlineStatus())
+        #   , 60000)
+        # , 60000)
 
   $(".js-theatre-skip").click ->
     if stream_index == stream_order.length - 1
