@@ -1,0 +1,59 @@
+<div class="relative absolute top left fill zxs">
+  <div class="row mhn">
+    <div class="col-sm-3 phn absolute top bottom bg-2 bss bwrs bc-2 hidden-xs">
+      <div class="absolute top left right dvxxxl">
+        <div class="dvl lhl c-12 fsxxl text-center">ingamefame</div>
+        <div class="paxs">
+          <input type="text" name="name" class="phxs pvxxxs bg-4 c-12 bss bwts bwhs bc-2 full-width js-search-channels"/>
+        </div>
+      </div>
+      <div class="absolute top left right bottom mtxxxxxl mbxxl" style="overflow-y: auto">
+        <% @channels.each do |channel| %>
+          <div class="bss bwts-plus bc-5 pointer js-theatre-channel" data-name="<%= channel.name %>">
+            <div class="paxs bg-4 bg-5-active c-14 bss bwbs bc-2 nowrap" style="overflow: hidden;text-overflow: ellipsis;">
+              <%= channel.name %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="absolute bottom left right dvl lhl c-8 fsxxxs text-center">
+        privacy | contact
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-9 col-sm-offset-3 phn absolute top bottom bg-5" style="overflow-y: auto">
+      <div class="relative phxs bg-1 dvl zxl">
+        <div class="row nmhxxxs">
+          <div class="col-xs-4 phxxxs">
+            <div class="dvs lhs c-14 fsm nowrap js-channel-status" style="overflow: hidden;text-overflow: ellipsis;"></div>
+            <div class="dvxs lhxs c-10 fsxxs nowrap js-channel-display-name" style="overflow: hidden;text-overflow: ellipsis;"></div>
+          </div>
+          <div class="col-xs-4 phxxxs text-center">
+            <table class="mha">
+              <tr>
+                <td class="phs">
+                  <div class="mtxxxs dam lhm bg-6 bg-8-hover c-10 c-16-hover fsxs circle pointer">
+                    <i class="fa fa-thumbs-down"></i>
+                  </div>
+                </td>
+                <td class="phs">
+                  <div class="mtxxxs dam lhm bg-6 bg-8-hover c-10 c-16-hover fsxs circle pointer">
+                    <i class="fa fa-thumbs-up"></i>
+                  </div>
+                </td>
+                <td class="phs">
+                  <div class="mtxxxs dam lhm bg-6 bg-8-hover c-10 c-16-hover fsxs circle pointer js-theatre-skip">
+                    <i class="fa fa-step-forward"></i>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="video-container">
+        <div id="twitch_embed_player">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
