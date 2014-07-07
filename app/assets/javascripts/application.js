@@ -50,7 +50,14 @@ $(document).ready(function() {
       ].join(''))
     }
   }).on('typeahead:selected', function(event, selection) {
-    $(".js-quote-citable-id").val(selection.id);
-    $(".js-search-channels").val(selection.name).change();
+    $.ajax({
+      type: "post",
+      url: "/user_channels",
+      data: {
+        channel_id: selection.id
+      }
+    }).success(function() {
+      $('<div class="bss bwts-plus bc-5 pointer js-theatre-channel" style="display: none" data-name="' + selection.name + '"><div class="paxs bg-4 bg-5-active c-14 bss bwbs bc-2 nowrap" style="overflow: hidden;text-overflow: ellipsis;">' + selection.name + '</div></div>').prependTo($(".js-theatre-channels")).click().fadeIn()
+    })
   });
 });

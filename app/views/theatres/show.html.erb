@@ -7,7 +7,7 @@
           <input type="text" name="name" class="phxs pvxxxs bg-4 c-12 bss bwts bwhs bc-2 full-width js-search-channels"/>
         </div>
       </div>
-      <div class="absolute top left right bottom mtxxxxxl mbxxl" style="overflow-y: auto">
+      <div class="absolute top left right bottom mtxxxxxl mbxxl js-theatre-channels" style="overflow-y: auto">
         <% @channels.each do |channel| %>
           <div class="bss bwts-plus bc-5 pointer js-theatre-channel" data-name="<%= channel.name %>">
             <div class="paxs bg-4 bg-5-active c-14 bss bwbs bc-2 nowrap" style="overflow: hidden;text-overflow: ellipsis;">

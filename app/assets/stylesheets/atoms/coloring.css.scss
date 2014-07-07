@@ -130,26 +130,10 @@
   background-color: $shade16;
 }
 
-.c-red, .c-red-hover:hover, .active .c-red-active {
-  color: $red;
+.c-yellow, .c-yellow-hover:hover, .active .c-yellow-active {
+  color: $yellow;
 }
 
-.bg-red, .bg-red-hover:hover, .active .bg-red-active {
-  background-color: $red;
-}
-
-.c-orange, .c-orange-hover:hover, .active .c-orange-active {
-  color: $orange;
-}
-
-.bg-orange, .bg-orange-hover:hover, .active .bg-orange-active {
-  background-color: $orange;
-}
-
-.c-teal, .c-teal-hover:hover, .active .c-teal-active {
-  color: $teal;
-}
-
-.bg-teal, .bg-teal-hover:hover, .active .bg-teal-active {
-  background-color: $teal;
+.bg-yellow, .bg-yellow-hover:hover, .active .bg-yellow-active {
+  background-color: $yellow;
 }

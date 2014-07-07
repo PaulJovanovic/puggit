@@ -29,7 +29,7 @@ changeChannel = ->
   swfobject.embedSWF("http://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf", "twitch_embed_player", "100%", "100%", "11", null, flash_vars, params)
 
 $(document).ready ->
-  $(".js-theatre-channel").click ->
+  $("body").on "click", ".js-theatre-channel", ->
     $channel = $(@)
     if !$channel.hasClass("active")
       $(".js-theatre-channel.active").removeClass("active")

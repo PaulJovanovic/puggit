@@ -91,13 +91,16 @@ body {
     }
 
     &.btn-primary, &.btn-primary:hover, &.btn-primary:visited, &.btn-primary:active, &.btn-primary:focus {
-      background-color: $teal;
-      border-color: $teal;
+      background-color: $yellow;
+      border-color: $yellow;
+      color: $shade1;
+      font-weight: 700;
       outline-width: 0px;
+      text-transform: uppercase;
 
       &.disabled, &:disabled {
-        background-color: $blueGrey;
-        border-color: $blueGrey;
+        background-color: $shade12;
+        border-color: $shade12;
         outline-width: 0px;
         color: #FFFFFF;
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";

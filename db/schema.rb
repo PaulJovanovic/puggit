@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140705211159) do
+ActiveRecord::Schema.define(version: 20140707023425) do
 
   create_table "channels", force: true do |t|
     t.string "name"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20140705211159) do
   create_table "games", force: true do |t|
     t.string "name"
     t.string "twitch_id"
+  end
+
+  create_table "user_channels", force: true do |t|
+    t.integer  "channel_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

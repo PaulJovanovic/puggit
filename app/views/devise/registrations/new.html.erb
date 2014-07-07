@@ -1,18 +1,37 @@
-<h2>Sign up</h2>
+<div class="bg-5 full">
+  <div class="container phxs">
+    <div class="row nmhxs">
+      <div class="col-sm-6 phxs mtm">
+        <div class="dvm"></div>
+        <div class="c-16 fsxxxxxl">
+          ingamefame
+        </div>
+        <div class="mtm c-12 fsm">
+          Watch Twitch.tv streams for their content, not their viewer count.
+        </div>
+      </div>
+      <div class="col-sm-6 phxs mtm">
+        <div class="dvl hidden-xs"></div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+          <div class="mts-plus">
+            <%= f.email_field :email, placeholder: "Email Address", autofocus: true, class: "paxs bg-16 bss bwas bc-3 full-width" %>
+          </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+          <div class="mts-plus">
+            <%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "paxs bg-16 bss bwas bc-3 full-width" %>
+          </div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+          <div class="mts-plus">
+            <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", autocomplete: "off", class: "paxs bg-16 bss bwas bc-3 full-width" %>
+          </div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+          <div class="mts-plus">
+            <%= f.submit "Sign up", class: "btn btn-primary full-width" %>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
