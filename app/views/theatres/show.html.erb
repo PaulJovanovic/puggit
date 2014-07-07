@@ -2,7 +2,9 @@
   <div class="row mhn">
     <div class="col-sm-3 phn absolute top bottom bg-2 bss bwrs bc-2 hidden-xs">
       <div class="absolute top left right dvxxxl">
-        <div class="dvl lhl c-12 fsxxl text-center">puggit</div>
+        <div class="dvl lhl bg-blue c-16 text-center">
+          <i class="icon-logo fsxxxxxl"></i>
+        </div>
         <div class="paxs">
           <input type="text" name="name" placeholder="Search channels" class="phxs pvxxxs bg-4 c-12 bss bwts bwhs bc-2 full-width js-search-channels"/>
         </div>
@@ -21,7 +23,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-9 col-sm-offset-3 phn absolute top bottom bg-5" style="overflow-y: auto">
-      <div class="relative phxs bg-1 dvl zxl">
+      <div class="relative phxs bg-2 dvl zxl">
         <div class="row nmhxxxs">
           <div class="col-xs-4 phxxxs">
             <div class="dvs lhs c-14 fsm nowrap js-channel-status" style="overflow: hidden;text-overflow: ellipsis;"></div>
@@ -47,6 +49,9 @@
                 </td>
               </tr>
             </table>
+          </div>
+          <div class="col-xs-4 phxxxs text-right">
+            <%= link_to "logout", destroy_user_session_path, method: :delete, class: "c-blue" %>
           </div>
         </div>
       </div>

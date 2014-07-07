@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('https://s3.amazonaws.com/vrbtm2/fonts/icomoon.eot?t6fd72');
-	src:url('https://s3.amazonaws.com/vrbtm2/fonts/icomoon.eot?#iefixt6fd72') format('embedded-opentype'),
-		url('https://s3.amazonaws.com/vrbtm2/fonts/icomoon.woff?t6fd72') format('woff'),
-		url('https://s3.amazonaws.com/vrbtm2/fonts/icomoon.ttf?t6fd72') format('truetype'),
-		url('https://s3.amazonaws.com/vrbtm2/fonts/icomoon.svg?t6fd72#icomoon') format('svg');
+    src:url('https://s3.amazonaws.com/puggit/fonts/icomoon.eot?9ys49k');
+    src:url('https://s3.amazonaws.com/puggit/fonts/icomoon.eot?#iefix9ys49k') format('embedded-opentype'),
+        url('https://s3.amazonaws.com/puggit/fonts/icomoon.woff?9ys49k') format('woff'),
+        url('https://s3.amazonaws.com/puggit/fonts/icomoon.ttf?9ys49k') format('truetype'),
+        url('https://s3.amazonaws.com/puggit/fonts/icomoon.svg?9ys49k#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,18 +23,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-leftquote:before {
-	content: "\e601";
+.icon-icon:before {
+    content: "\e600";
 }
-.icon-rightquote:before {
-	content: "\e602";
-}
-.icon-requote:before {
-	content: "\e603";
-}
-.icon-vrbtm:before {
-	content: "\e604";
-}
-.icon-verified:before {
-	content: "\e600";
+.icon-logo:before {
+    content: "\e601";
 }

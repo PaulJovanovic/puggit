@@ -3,34 +3,36 @@
     <div class="row nmhxs">
       <div class="col-sm-6 phxs mtm">
         <div class="dvm"></div>
-        <div class="c-16 fsxxxxxl">
-          ingamefame
-        </div>
+        <i class="icon-logo c-16" style="font-size: 140px"></i>
         <div class="mtm c-12 fsm">
-          Watch Twitch.tv streams for their content, not their viewer count.
+          Discover gamers you never knew were streaming!
         </div>
       </div>
       <div class="col-sm-6 phxs mtm">
         <div class="dvl hidden-xs"></div>
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= devise_error_messages! %>
-          <div class="mts-plus">
-            <%= f.email_field :email, placeholder: "Email Address", autofocus: true, class: "paxs bg-16 bss bwas bc-3 full-width" %>
-          </div>
+        <div class="pam bg-6 bras">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+            <div class="mts-plus">
+              <%= f.email_field :email, placeholder: "Email Address", autofocus: true, class: "paxs bg-16 bss bwas bc-5 full-width" %>
+            </div>
 
-          <div class="mts-plus">
-            <%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "paxs bg-16 bss bwas bc-3 full-width" %>
-          </div>
+            <div class="mts-plus">
+              <%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "paxs bg-16 bss bwas bc-5 full-width" %>
+            </div>
 
-          <div class="mts-plus">
-            <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", autocomplete: "off", class: "paxs bg-16 bss bwas bc-3 full-width" %>
-          </div>
+            <div class="mts-plus">
+              <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", autocomplete: "off", class: "paxs bg-16 bss bwas bc-5 full-width" %>
+            </div>
 
-          <div class="mts-plus">
-            <%= f.submit "Sign up", class: "btn btn-primary full-width" %>
+            <div class="mts-plus">
+              <%= f.submit "Sign up", class: "btn btn-primary full-width" %>
+            </div>
+          <% end %>
+          <div class="text-center">
+            <%= render "devise/shared/links" %>
           </div>
-        <% end %>
-        <%= render "devise/shared/links" %>
+        </div>
       </div>
     </div>
   </div>
