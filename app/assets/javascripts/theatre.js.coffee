@@ -9,7 +9,6 @@ shuffle = (a) ->
   a
 
 changeChannel = ->
-  stream_order = shuffle(Object.keys(streams))
   stream_name = stream_order[stream_index]
   $(".js-channel-status").html(streams[stream_name].status).attr("title", streams[stream_name].status)
   $(".js-channel-display-name").html(streams[stream_name].display_name)
@@ -45,6 +44,7 @@ $(document).ready ->
       ).success (data)->
         streams = data
         stream_index = 0
+        stream_order = shuffle(Object.keys(streams))
         changeChannel()
         # setTimeout( ->
         #   player = $("#twitch_embed_player")[0]
