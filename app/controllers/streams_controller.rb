@@ -7,4 +7,15 @@ class StreamsController < ApplicationController
     end
     render json: streams
   end
+
+  def status
+
+    stream_response = HTTParty.get("https://api.twitch.tv/kraken/streams/#{params[:name]}")
+    if stream_response["stream"] != nil
+      render json: { online: true }, status: 200
+    else
+      binding.pry
+      render json: { online: false }, status: :unprocessible_entity
+    end
+  end
 end

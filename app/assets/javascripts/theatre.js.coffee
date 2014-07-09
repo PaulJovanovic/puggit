@@ -8,25 +8,44 @@ shuffle = (a) ->
     [a[i], a[j]] = [a[j], a[i]]
   a
 
-changeChannel = ->
+nextStream = ->
+  if stream_index == stream_order.length - 1
+    stream_index = 0
+  else
+    stream_index++
+
+loadStream = ->
   stream_name = stream_order[stream_index]
-  $(".js-channel-status").html(streams[stream_name].status).attr("title", streams[stream_name].status)
-  $(".js-channel-display-name").html(streams[stream_name].display_name)
-  $(".js-channel-logo").attr("src", streams[stream_name].logo).removeClass("hide")
-  onlineChecker = ""
+  $.ajax(
+    type: "GET"
+    url: "/streams/status"
+    data:
+      name: stream_name
+  ).success( (data)->
+    $(".js-channel-status").html(streams[stream_name].status).attr("title", streams[stream_name].status)
+    $(".js-channel-display-name").html(streams[stream_name].display_name)
+    $(".js-channel-logo").attr("src", streams[stream_name].logo).removeClass("hide")
+    onlineChecker = ""
 
-  clearInterval(onlineChecker)
+    clearInterval(onlineChecker)
 
-  flash_vars =
-    embed: 1
-    channel: stream_name
-    auto_play: "true"
+    flash_vars =
+      embed: 1
+      channel: stream_name
+      auto_play: "true"
 
-  params =
-    allowScriptAccess: "always"
-    allowFullScreen: "true"
+    params =
+      allowScriptAccess: "always"
+      allowFullScreen: "true"
 
-  swfobject.embedSWF("http://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf", "twitch_embed_player", "100%", "100%", "11", null, flash_vars, params)
+    swfobject.embedSWF("http://www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf", "twitch_embed_player", "100%", "100%", "11", null, flash_vars, params)
+  ).fail(->
+    loadNextStream()
+  )
+
+loadNextStream = ->
+  nextStream()
+  loadStream()
 
 $(document).ready ->
   $("body").on "click", ".js-theatre-channel", ->
@@ -45,19 +64,14 @@ $(document).ready ->
         streams = data
         stream_index = 0
         stream_order = shuffle(Object.keys(streams))
-        changeChannel()
+        loadStream()
         # setTimeout( ->
         #   player = $("#twitch_embed_player")[0]
         #   onlineChecker = setInterval( ->
-        #     console.log(player.onlineStatus())
         #   , 60000)
         # , 60000)
 
   $(".js-theatre-skip").click ->
-    if stream_index == stream_order.length - 1
-      stream_index = 0
-    else
-      stream_index++
-    changeChannel()
+    loadNextStream()
 
   $(".js-theatre-channel:first").click()

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resource :streams do
     collection do
       get :search
+      get :status
     end
   end
   root to: "theatres#show"
