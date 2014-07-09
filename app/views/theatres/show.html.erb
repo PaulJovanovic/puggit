@@ -26,6 +26,7 @@
       <div class="relative phxs bg-2 dvl zxl">
         <div class="row nmhxxxs">
           <div class="col-xs-4 phxxxs">
+            <img class="mtxxxs mrxs dam pull-left hide js-channel-logo"/>
             <div class="dvs lhs c-14 fsm nowrap js-channel-status" style="overflow: hidden;text-overflow: ellipsis;"></div>
             <div class="dvxs lhxs c-10 fsxxs nowrap js-channel-display-name" style="overflow: hidden;text-overflow: ellipsis;"></div>
           </div>
@@ -51,12 +52,31 @@
             </table>
           </div>
           <div class="col-xs-4 phxxxs text-right">
-            <%= link_to "logout", destroy_user_session_path, method: :delete, class: "c-blue" %>
+            <div class="js-tab" data-target="#account">
+              <div class="mtxxxs dam lhm bg-3 bg-4-hover bg-1-active c-10 c-11-hover c-blue-active bss bwas bc-1 text-center pointer pull-right">
+                <i class="fa fa-cube fsm"></i>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div class="video-container">
         <div id="twitch_embed_player">
+        </div>
+      </div>
+    </div>
+    <div id="account" class="col-xs-12 col-sm-3 col-md-2 phn mtxxl absolute top right zxl hide">
+      <div class="mhxs bg-1 c-16 fsxxxs">
+        <div class="phxs pvm c-blue nowrap no-overflow" style="text-overflow: ellipsis;">
+          <%= current_user.email %>
+        </div>
+        <div class="paxs">
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <div class="mrxs pull-left">
+              <i class="fa fa-sign-out fsxs"></i>
+            </div>
+            logout
+          <% end %>
         </div>
       </div>
     </div>
