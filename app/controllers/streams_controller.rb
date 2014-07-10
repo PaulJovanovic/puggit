@@ -14,7 +14,6 @@ class StreamsController < ApplicationController
     if stream_response["stream"] != nil
       render json: { online: true }, status: 200
     else
-      binding.pry
       render json: { online: false }, status: :unprocessible_entity
     end
   end

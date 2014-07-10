@@ -74,6 +74,5 @@ $(document).ready ->
   $(".js-theatre-skip").click ->
     loadNextStream()
 
-  if ($(".js-theatre-channel").length > 0){
+  if $(".js-theatre-channel").length > 0
     $(".js-theatre-channel:first").click()
-  }
