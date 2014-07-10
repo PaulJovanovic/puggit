@@ -10,7 +10,10 @@ class ChannelsController < ApplicationController
   end
 
   def search
-    channels = Channel.search_by_name(params[:query].strip()).where('id not in (?)', current_user.channels.map(&:id))
+    channels = Channel.search_by_name(params[:query].strip())
+    if current_user.channels.count > 0
+      channels = channels.where('id not in (?)', current_user.channels.map(&:id))
+    end
     render json: channels.map { |channel| { id: channel.id, name: channel.name } }
   end
 
