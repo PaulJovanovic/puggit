@@ -25,6 +25,7 @@ loadStream = ->
     $(".js-channel-status").html(streams[stream_name].status).attr("title", streams[stream_name].status)
     $(".js-channel-display-name").html(streams[stream_name].display_name)
     $(".js-channel-logo").attr("src", streams[stream_name].logo).removeClass("hide")
+    $(".js-theatre-controller").removeClass("invisible")
     onlineChecker = ""
 
     clearInterval(onlineChecker)
