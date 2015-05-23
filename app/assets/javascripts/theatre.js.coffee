@@ -79,5 +79,17 @@ $(document).ready ->
   $(".js-theatre-skip").click ->
     loadNextStream()
 
+  $("body").on "click", ".js-theatre-channel-remove", (e) ->
+    e.stopPropagation()
+    $channel = $(@).closest(".js-theatre-channel")
+    channelWasActive = $channel.hasClass("active")
+
+    $(@).find(".js-theatre-channel-remove-form").submit()
+
+    $channel.animate {height: "0px"}, 400, ->
+      $(@).remove()
+      if channelWasActive
+        $(".js-theatre-channel:first").click()
+
   if $(".js-theatre-channel").length > 0
     $(".js-theatre-channel[data-active=true]").click()

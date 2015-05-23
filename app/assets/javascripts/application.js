@@ -56,8 +56,8 @@ $(document).ready(function() {
       data: {
         channel_id: selection.id
       }
-    }).success(function() {
-      $('<div class="bss bwts-plus bc-5 pointer js-theatre-channel" style="display: none" data-name="' + selection.name + '"><div class="paxs bg-4 bg-5-active c-14 bss bwbs bc-2 nowrap" style="overflow: hidden;text-overflow: ellipsis;">' + selection.name + '</div></div>').prependTo($(".js-theatre-channels")).click().fadeIn()
-    })
+    }).success(function(data) {
+      $('<div class="relative bss bwts-plus bc-5 pointer hover-action js-theatre-channel" data-id="' + data.id + '" data-channel-id="' + data.channel.id + '" data-channel-name="' + data.channel.name + '" data-active=false><div class="paxs bg-4 bg-6-active c-11 c-14-hover c-14-active bss bwbs bc-2 nowrap" style="overflow: hidden;text-overflow: ellipsis;">' + data.channel.name+ '</div><div class="absolute top right bottom c-1 c-blue-hover hover-action-show js-theatre-channel-remove"><table class="full-height"><tbody><tr><td class="phxxxs"><i class="fa fa-times fss"></i></td></tr></tbody></table><div class="hide"><form accept-charset="UTF-8" action="/user_channels/' + data.channel.id + '" class="js-theatre-channel-remove-form" data-remote="true" id="edit_user_channel_' + data.channel.id + '" method="post"><div style="display:none"><input name="utf8" type="hidden" value="✓"><input name="_method" type="hidden" value="delete"></div><input name="commit" type="submit" value="remove"></form></div></div></div>').prependTo($(".js-theatre-channels")).click().fadeIn();
+    });
   });
 });

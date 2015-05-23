@@ -11,9 +11,23 @@
       </div>
       <div class="absolute top left right bottom mtxxxxxl mbxxl js-theatre-channels" style="overflow-y: auto">
         <% @user_channels.each do |user_channel| %>
-          <div class="bss bwts-plus bc-5 pointer js-theatre-channel" data-id="<%= user_channel.id %>" data-channel-id="<%= user_channel.channel.id %>" data-channel-name="<%= user_channel.channel.name %>" data-active="<%= user_channel.active? %>">
+          <div class="relative bss bwts-plus bc-5 pointer hover-action js-theatre-channel" data-id="<%= user_channel.id %>" data-channel-id="<%= user_channel.channel.id %>" data-channel-name="<%= user_channel.channel.name %>" data-active="<%= user_channel.active? %>">
             <div class="paxs bg-4 bg-6-active c-11 c-14-hover c-14-active bss bwbs bc-2 nowrap" style="overflow: hidden;text-overflow: ellipsis;">
               <%= user_channel.channel.name %>
+            </div>
+            <div class="absolute top right bottom c-1 c-blue-hover hover-action-show js-theatre-channel-remove">
+              <table class="full-height">
+                <tr>
+                  <td class="phxxxs">
+                    <i class="fa fa-times fss"></i>
+                  </td>
+                </tr>
+              </table>
+              <div class="hide">
+                <%= form_for user_channel, method: :delete, remote: true, html: { class: "js-theatre-channel-remove-form" } do |f| %>
+                  <%= f.submit "remove" %>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>
