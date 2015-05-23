@@ -1,5 +1,5 @@
 class TheatresController < ApplicationController
   def show
-    @channels = current_user.channels.order("created_at desc")
+    @user_channels = current_user.user_channels.includes(:channel).order("created_at desc")
   end
 end

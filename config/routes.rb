@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :user_channels
+  resources :user_channels do
+    member do
+      post :activate
+    end
+  end
   resource :theatre
   resource :channels do
     collection do

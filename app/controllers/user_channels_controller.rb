@@ -8,4 +8,14 @@ class UserChannelsController < ApplicationController
       render json: { errors: @user_channel.errors }, status: :unprocessible_entity
     end
   end
+
+  def activate
+    @user_channel = UserChannel.where(user_id: current_user.id, id: params[:id]).last
+
+    if @user_channel.activate
+      render json: { id: @user_channel.id }
+    else
+      render json: { errors: @user_channel.errors }, status: :unprocessible_entity
+    end
+  end
 end

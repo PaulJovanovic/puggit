@@ -55,11 +55,15 @@ $(document).ready ->
       $(".js-theatre-channel.active").removeClass("active")
       $channel.addClass("active")
 
+      $.ajax
+        type: "POST"
+        url: "/user_channels/#{$channel.data("id")}/activate"
+
       $.ajax(
         type: "GET"
         url: "/streams/search"
         data:
-          query: $channel.data("name")
+          query: $channel.data("channel-name")
         dataType: "json"
       ).success (data)->
         streams = data
@@ -76,4 +80,4 @@ $(document).ready ->
     loadNextStream()
 
   if $(".js-theatre-channel").length > 0
-    $(".js-theatre-channel:first").click()
+    $(".js-theatre-channel[data-active=true]").click()

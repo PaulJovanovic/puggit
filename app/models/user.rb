@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :user_channels
   has_many :channels, :through => :user_channels
+
+  def current_channel
+    user_channels.where(active: true).last
+  end
 end
