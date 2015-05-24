@@ -12,9 +12,7 @@ class Game < ActiveRecord::Base
       total = game_list["_total"]
       offset += limit
       game_list["top"].each do |game|
-        if Game.where(twitch_id: game["game"]["_id"]).count == 0
-          Game.create(name: game["game"]["name"], twitch_id: game["game"]["_id"])
-        end
+        Game.create(name: game["game"]["name"], twitch_id: game["game"]["_id"])
       end
     end
   end
