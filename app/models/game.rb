@@ -13,6 +13,7 @@ class Game < ActiveRecord::Base
       offset += limit
       game_list["top"].each do |game|
         Game.create(name: game["game"]["name"], twitch_id: game["game"]["_id"])
+        Channel.create(name: game["game"]["name"])
       end
     end
   end
