@@ -3,18 +3,11 @@ class Game < ActiveRecord::Base
 
   validates :name, uniqueness: true
 
-  def self.sync_with_twitch
-    total = 0
-    limit = 100
-    offset = 0
-    while total == 0 || limit + offset < total do
-      game_list = HTTParty.get("https://api.twitch.tv/kraken/games/top?limit=#{limit}&offset=#{offset}")
-      total = game_list["_total"]
-      offset += limit
-      game_list["top"].each do |game|
-        Game.create(name: game["game"]["name"], twitch_id: game["game"]["_id"])
-        Channel.create(name: game["game"]["name"])
-      end
-    end
+  after_create :create_channel
+
+  private
+
+  def create_channel
+    Channel.create(channelable_type: "Game", channelable_id: id, name: name)
   end
 end

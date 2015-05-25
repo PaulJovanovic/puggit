@@ -11,16 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150523175719) do
+ActiveRecord::Schema.define(version: 20150525213623) do
 
   create_table "channels", force: true do |t|
-    t.string "name"
+    t.string  "name"
+    t.string  "channelable_type"
+    t.integer "channelable_id"
   end
 
   create_table "games", force: true do |t|
     t.string "name"
     t.string "twitch_id"
   end
+
+  create_table "streamer_game_plays", force: true do |t|
+    t.integer  "streamer_game_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "streamer_game_plays", ["streamer_game_id"], name: "index_streamer_game_plays_on_streamer_game_id", using: :btree
+
+  create_table "streamer_games", force: true do |t|
+    t.integer  "streamer_id"
+    t.integer  "game_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "streamer_game_plays_count", default: 0
+  end
+
+  create_table "streamers", force: true do |t|
+    t.integer  "twitch_id"
+    t.string   "name"
+    t.string   "language"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "streamers", ["name"], name: "index_streamers_on_name", unique: true, using: :btree
+  add_index "streamers", ["twitch_id"], name: "index_streamers_on_twitch_id", unique: true, using: :btree
 
   create_table "user_channels", force: true do |t|
     t.integer  "channel_id"
