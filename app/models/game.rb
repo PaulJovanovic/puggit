@@ -1,5 +1,6 @@
 class Game < ActiveRecord::Base
   has_one :channel, as: :channelable
+  has_many :streamer_games
 
   validates :name, uniqueness: true
 
