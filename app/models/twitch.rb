@@ -16,7 +16,7 @@ module Twitch
       offset += limit
       response["top"].each do |game|
         game =  Game.where(twitch_id: "#{game["game"]["_id"]}").last || Game.create(name: game["game"]["name"], twitch_id: game["game"]["_id"])
-        crawl_streams(game)
+        Twitch.crawl_streams(game)
       end
     end
   end
