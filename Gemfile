@@ -36,6 +36,7 @@ group :test do
 end
 
 group :production do
+  gem 'clockwork'
   gem 'newrelic_rpm'
 end
 
