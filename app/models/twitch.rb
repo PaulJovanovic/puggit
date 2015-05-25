@@ -15,7 +15,7 @@ module Twitch
       total = response["_total"]
       offset += limit
       response["top"].each do |game|
-        game =  Game.where(twitch_id: game["game"]["_id"]).last || Game.create(name: game["game"]["name"], twitch_id: game["game"]["_id"])
+        game =  Game.where(twitch_id: "#{game["game"]["_id"]}").last || Game.create(name: game["game"]["name"], twitch_id: game["game"]["_id"])
         crawl_streams(game)
       end
     end
@@ -30,7 +30,7 @@ module Twitch
       total = response["_total"]
       offset += limit
       response["streams"].each do |stream|
-        streamer = Streamer.where(twitch_id: stream["channel"]["_id"]).last || Streamer.create(name: stream["channel"]["display_name"], twitch_id: stream["channel"]["_id"], language: stream["channel"]["language"])
+        streamer = Streamer.where(twitch_id: "#{stream["channel"]["_id"]}").last || Streamer.create(name: stream["channel"]["display_name"], twitch_id: stream["channel"]["_id"], language: stream["channel"]["language"])
         streamer.played(game)
       end
     end
