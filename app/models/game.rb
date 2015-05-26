@@ -6,6 +6,14 @@ class Game < ActiveRecord::Base
 
   after_create :create_channel
 
+  def current_streamers
+    streamer_games.where("updated_at > ?", 2.hours.ago)
+  end
+
+  def has_current_streamers?
+    current_streamers.any?
+  end
+
   private
 
   def create_channel
