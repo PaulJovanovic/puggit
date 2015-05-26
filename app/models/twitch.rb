@@ -30,8 +30,10 @@ module Twitch
       total = response["_total"]
       offset += limit
       response["streams"].each do |stream|
-        streamer = Streamer.where(twitch_id: "#{stream["channel"]["_id"]}").last || Streamer.create(name: stream["channel"]["display_name"], twitch_id: stream["channel"]["_id"], language: stream["channel"]["language"])
-        streamer.played(game)
+        if stream["game"] == game.name
+          streamer = Streamer.where(twitch_id: "#{stream["channel"]["_id"]}").last || Streamer.create(name: stream["channel"]["display_name"], twitch_id: stream["channel"]["_id"], language: stream["channel"]["language"])
+          streamer.played(game)
+        end
       end
     end
   end

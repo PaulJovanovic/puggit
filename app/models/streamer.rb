@@ -1,6 +1,6 @@
 class Streamer < ActiveRecord::Base
   has_one :channel, as: :channelable
-  has_many :streamer_games
+  has_many :streamer_games, dependent: :destroy
 
   after_create :create_channel
 
